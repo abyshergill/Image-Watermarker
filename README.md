@@ -55,9 +55,7 @@ Usage
 ___
 # GUI instructions:
 
-`![GUI\UI.png]`
-
-![alt text](UI.png)
+![Root Folder](GUI/UI.png)
 
 * **Select Folders:**
 
