@@ -1,0 +1,10 @@
+input_folder=
+output_folder=
+selected_watermark_type=image
+watermark_image=
+watermark_text=
+text_font_family=Arial
+text_font_size=24
+text_color=#000000
+watermark_size=15
+watermark_opacity=50
