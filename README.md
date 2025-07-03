@@ -83,6 +83,8 @@ ___
 
 * **Start Watermarking:** Click the "Start Watermarking" button. The application will process all supported image files in the input folder and save them to the output folder. A status bar will show progress, and a pop-up will notify you upon completion.
 
+### Note :
+90% percent of code for this application is vibe coding using google gemini only 10% by human to fix small issue. 
 **Enjoy watermarking your images with ease!** 
 
 ## LICENSE AND AUTHOR 
