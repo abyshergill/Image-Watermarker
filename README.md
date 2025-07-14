@@ -2,6 +2,12 @@
 
 This is a full-fledged Python application built with PyQt5 for watermarking images. It supports both image-based and text-based watermarks, offering control over size and transparency, and features a user-friendly graphical interface. The application processes images in a selected input folder and saves the watermarked versions to a specified output folder.
 
+# Update
+## 14th July'25
+- Add option for hollow text
+- Add option for single text watermark and Multi text watermark
+- Sender and receiver name will work as watermark in case of text option
+
 ## Features
 * **Object-Oriented Design (OOP):** The core image processing logic is encapsulated in the ImageWatermarker class, separate from the WatermarkApp GUI class, promoting modularity and reusability.
 
@@ -10,6 +16,9 @@ This is a full-fledged Python application built with PyQt5 for watermarking imag
     - Image Watermark: Use an existing image file (e.g., your logo) as a watermark.
 
     - Text Watermark: Apply custom text as a watermark, with options to select font and color.
+
+        - Single line Text watermark with text outline option
+        - Multiline Text watermark
 
 * **Configurable Watermark Properties:**
 
