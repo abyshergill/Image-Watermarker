@@ -49,7 +49,11 @@ class ImageWatermarker:
             paste_y = max(0, paste_y)
 
             base_image.paste(resized_watermark, (paste_x, paste_y), resized_watermark)
-            base_image.save(output_path)
+            if output_path.lower().endswith(('.jpg', '.jpeg')):
+                base_image = base_image.convert("RGB")
+                base_image.save(output_path, quality=95)
+            else:
+                base_image.save(output_path)            
         except Exception as e:
             raise Exception(f"Failed to apply image watermark: {e}")
 
@@ -191,7 +195,13 @@ class ImageWatermarker:
                         draw.text((x2_pos, y2_pos), text2, font=font, fill=fill_color)
 
             watermarked_image = Image.alpha_composite(base_image, watermark_layer)
-            watermarked_image.save(output_path)
+            if output_path.lower().endswith(('.png', '.gif', '.tif')):
+                watermarked_image.save(output_path)
+            elif output_path.lower().endswith(('.jpg', '.jpeg')):
+                watermarked_image = watermarked_image.convert("RGB")
+                watermarked_image.save(output_path, quality=95)
+            else:
+                watermarked_image.save(output_path)
 
         except Exception as e:
             raise Exception(f"Failed to apply text watermark: {e}")
@@ -205,45 +215,7 @@ class ImageWatermarker:
         except Exception as e:
             raise IOError(f"Failed to load watermark image: {e}")
 
-    def apply_watermark_image(self, input_path, output_path, size_ratio, opacity_ratio):
-        """
-        Applies an image watermark to an image.
-        """
-        try:
-            base_image = Image.open(input_path).convert("RGBA")
-            if self.watermark_image is None:
-                raise ValueError("Watermark image not loaded. Please select one.")
 
-            img_width, img_height = base_image.size
-            wm_width, wm_height = self.watermark_image.size
-            target_wm_size = int(min(img_width, img_height) * size_ratio)
-            
-            if wm_width > wm_height:
-                new_wm_width = target_wm_size
-                new_wm_height = int(wm_height * (new_wm_width / wm_width))
-            else:
-                new_wm_height = target_wm_size
-                new_wm_width = int(wm_width * (new_wm_height / wm_height)) 
-            
-            new_wm_width = max(1, new_wm_width)
-            new_wm_height = max(1, new_wm_height)
-
-            resized_watermark = self.watermark_image.resize((new_wm_width, new_wm_height), Image.LANCZOS)
-
-            alpha = resized_watermark.split()[-1]
-            alpha = Image.eval(alpha, lambda x: x * opacity_ratio)
-            resized_watermark.putalpha(alpha)
-            padding = 20 
-            paste_x = img_width - new_wm_width - padding
-            paste_y = img_height - new_wm_height - padding
-
-            paste_x = max(0, paste_x)
-            paste_y = max(0, paste_y)
-
-            base_image.paste(resized_watermark, (paste_x, paste_y), resized_watermark)
-            base_image.save(output_path)
-        except Exception as e:
-            raise Exception(f"Failed to apply image watermark: {e}")
 
 
 
