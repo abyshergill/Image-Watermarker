@@ -1,0 +1,14 @@
+input_folder=/home/aby/Desktop/abc
+output_folder=/home/aby/Desktop/cde
+selected_watermark_type=text
+watermark_image=
+sender_text=abc
+receiver_text=rrrr
+text_font_family=Arial
+text_font_size=24
+text_color=#000000
+text_outline_enabled=True
+text_repetition_enabled=True
+watermark_size=15.0
+watermark_opacity=50.0
+add_date_enabled=False
